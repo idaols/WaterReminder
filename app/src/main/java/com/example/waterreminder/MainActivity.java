@@ -14,5 +14,5 @@ public class MainActivity extends AppCompatActivity {
 
     int i = 0;
 
-    henna testi
+    int x = 1;
 }
