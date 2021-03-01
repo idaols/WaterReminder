@@ -9,14 +9,18 @@ package com.example.waterreminder;
 public class Counter {
     private UserData user;
     private float waterAmount;
+    private float drankWater;
+    private float currentValue;
 
     public Counter(UserData user) {
         this.user = user;
         this.waterAmount = countWaterAmount();
+        this.drankWater = 0;
+        this.currentValue = 0;
     }
 
     /**
-     * Counts the amount of water that should be drank
+     * Counts the amount of water that should be drank daily
      * @return reference to waterAmount
      */
     private float countWaterAmount() {
@@ -25,10 +29,32 @@ public class Counter {
     }
 
     /**
-     * Returns counted amount of water
+     * Returns counted amount of water that should be drank daily
      * @return reference to waterAmount after calculating
      */
     public float getWaterAmount() {
         return this.waterAmount;
+    }
+
+    /**
+     * Method adds entered value of drank water to currentValue
+     */
+    public void addDrankWater() {
+        this.currentValue = this.currentValue + this.drankWater;
+    }
+
+    /**
+     * Returns how much water has been drunk
+     * @return reference to currentValue after adding drunk water amount
+     */
+    public String getDrankWaterValue() {
+        return Float.toString(currentValue);
+    }
+
+    /**
+     * resets currentValue to zero
+     */
+    public void reset() {
+        this.currentValue = 0;
     }
 }
