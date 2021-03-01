@@ -14,7 +14,7 @@ public class Counter {
 
     public Counter() {
         this.user = user;
-        this.waterAmount = countWaterAmount();
+        //this.waterAmount = countWaterAmount();
         this.drankWater = 0;
         this.currentValue = 0;
     }

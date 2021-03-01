@@ -30,9 +30,7 @@ public class UserData {
      * @return reference to age
      */
 
-    public int getAge() {
-        return age;
-    }
+    public int getAge() { return age;}
 
     /**
      * Returns given weight

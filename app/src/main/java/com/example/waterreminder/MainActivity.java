@@ -15,10 +15,9 @@ import android.widget.TextView;
  */
 public class MainActivity extends AppCompatActivity {
 
-    private float waterAmount;
     private Counter counterDrinkWater;
     private TextView textViewCurrentValue;
-    private EditText editTextWaterAmount;
+    private EditText editTextAddWater;
     private Button buttonAddWater;
 
     @Override
@@ -27,9 +26,9 @@ public class MainActivity extends AppCompatActivity {
         Log.d("test", "water");
         setContentView(R.layout.activity_main);
 
-        editTextWaterAmount = findViewById(R.id.editTextWaterAmount);
+        editTextAddWater = findViewById(R.id.editTextAddWater);
         textViewCurrentValue = findViewById(R.id.textViewCurrentValue);
-        buttonAddWater = (Button) findViewById(R.id.buttonAddWater);
+        buttonAddWater = findViewById(R.id.buttonAddWater);
 
         counterDrinkWater = new Counter();
         updateUI();
@@ -38,10 +37,14 @@ public class MainActivity extends AppCompatActivity {
     /**
      * This is a method for the button. By pressing the button it will add the added number to
      * total amount.
-     * @param view
      */
 
+    public void setEditTextAddWater() {
+        EditText editWater = findViewById(R.id.editTextAddWater);
+        String water = editWater.getText().toString();
+    }
     public void buttonAddWater(View view) {
+        setEditTextAddWater();
         counterDrinkWater.addDrankWater();
         updateUI();
     }
@@ -55,9 +58,4 @@ public class MainActivity extends AppCompatActivity {
         TextView textView = findViewById(R.id.textViewCurrentValue);
         textView.setText(Float.toString(counterDrinkWater.getDrankWaterValue()));
     }
-
-
-
-
-
 }
