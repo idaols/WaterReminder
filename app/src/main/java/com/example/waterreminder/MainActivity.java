@@ -2,9 +2,8 @@ package com.example.waterreminder;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,44 +15,24 @@ import android.widget.TextView;
  */
 public class MainActivity extends AppCompatActivity {
 
-    //Laskuri puuttuu
-    //private Counter counterDrinkWater;
-
-    private TextView textViewWaterTotal;
-    private Number numberWater;
+    private float waterAmount;
+    private Counter counterDrinkWater;
+    private TextView textViewCurrentValue;
+    private EditText editTextWaterAmount;
     private Button buttonAddWater;
-
-    public static final String EXTRA_MESSAGE = "com.example.MESSAGE";
-    public static final String SHARED_PREFS = "shared preferences";
-    public static final String OK_BUTTON = "ok button pressed";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d("test", "water");
         setContentView(R.layout.activity_main);
 
-        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        editTextWaterAmount = findViewById(R.id.editTextWaterAmount);
+        textViewCurrentValue = findViewById(R.id.textViewCurrentValue);
+        buttonAddWater = (Button) findViewById(R.id.buttonAddWater);
 
-        //Laskuri puuttuu
-        //textViewWaterTotal = findViewById(R.id.counterDrinkWater);
-        //counterDrinkWater = new Counter();
-        //updateUI;
-    }
-
-    /**
-     * This method is for background survey. It will appear only once when the user opens the app
-     * for the first time.
-     * @param view
-     */
-    public void okSurvey(View view) {
-        Intent intent = new Intent(this, BackgroundSurveyActivity.class);
-        EditText editAge = (EditText) findViewById(R.id.editTextAge);
-        String age = editAge.getText().toString();
-        EditText editWeight = (EditText) findViewById(R.id.editTextWeight);
-        String weight = editWeight.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, "");
-        startActivity(intent);
-
+        counterDrinkWater = new Counter();
+        updateUI();
     }
 
     /**
@@ -63,9 +42,8 @@ public class MainActivity extends AppCompatActivity {
      */
 
     public void buttonAddWater(View view) {
-        //Laskuri puuttuu
-        //counterDrinkWater.plus();
-        //updateUI();
+        counterDrinkWater.addDrankWater();
+        updateUI();
     }
 
     /**
@@ -74,9 +52,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateUI() {
 
-        //Laskuri puuttuu
-        TextView textView = findViewById(R.id.textViewWaterTotal);
-        //textView.setText(Integer.toString(counterDrinkWater.getValue()));
+        TextView textView = findViewById(R.id.textViewCurrentValue);
+        textView.setText(Float.toString(counterDrinkWater.getDrankWaterValue()));
     }
 
 

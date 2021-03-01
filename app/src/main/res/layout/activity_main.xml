@@ -7,7 +7,7 @@
     tools:context=".MainActivity" >
 
     <EditText
-        android:id="@+id/numberWater"
+        android:id="@+id/editTextWaterAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -24,6 +24,7 @@
         android:id="@+id/buttonAddWater"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="buttonAddWater"
         android:text="Add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,10 +34,10 @@
         app:layout_constraintVertical_bias="0.568" />
 
     <TextView
-        android:id="@+id/textViewWaterTotal"
+        android:id="@+id/textViewCurrentValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/water_total"
+        android:text="0"
         android:textAlignment="center"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"

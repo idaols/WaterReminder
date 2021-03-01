@@ -12,7 +12,7 @@ public class Counter {
     private float drankWater;
     private float currentValue;
 
-    public Counter(UserData user) {
+    public Counter() {
         this.user = user;
         this.waterAmount = countWaterAmount();
         this.drankWater = 0;
@@ -23,7 +23,7 @@ public class Counter {
      * Counts the amount of water that should be drank daily
      * @return reference to waterAmount
      */
-    private float countWaterAmount() {
+    private Float countWaterAmount() {
         waterAmount = (this.user.getAge() * this.user.getWeight()) / 1000;
         return waterAmount;
     }
@@ -47,8 +47,8 @@ public class Counter {
      * Returns how much water has been drunk
      * @return reference to currentValue after adding drunk water amount
      */
-    public String getDrankWaterValue() {
-        return Float.toString(currentValue);
+    public Float getDrankWaterValue() {
+        return currentValue;
     }
 
     /**
