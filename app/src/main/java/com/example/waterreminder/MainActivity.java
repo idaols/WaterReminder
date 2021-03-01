@@ -3,6 +3,7 @@ package com.example.waterreminder;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -23,11 +24,15 @@ public class MainActivity extends AppCompatActivity {
     private Button buttonAddWater;
 
     public static final String EXTRA_MESSAGE = "com.example.MESSAGE";
+    public static final String SHARED_PREFS = "shared preferences";
+    public static final String OK_BUTTON = "ok button pressed";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
 
         //Laskuri puuttuu
         //textViewWaterTotal = findViewById(R.id.counterDrinkWater);
