@@ -3,12 +3,14 @@ package com.example.waterreminder;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -25,12 +27,16 @@ import static android.provider.Settings.System.DATE_FORMAT;
  */
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = "MainActivity";
+
     private Counter counterDrinkWater;
 
     private TextView textViewCurrentValue;
+    private TextView theDate;
     private EditText editTextWaterAmount;
     private Button buttonAddWater;
     private Button buttonGraph;
+    private Button buttonCalendar;
 
     private SharedPreferences sharedPreferences;
     private final String sharePreferencesName = "weekdayStore";
@@ -47,10 +53,17 @@ public class MainActivity extends AppCompatActivity {
         textViewCurrentValue = findViewById(R.id.textViewCurrentValue);
         buttonAddWater = findViewById(R.id.buttonAddWater);
         buttonGraph = findViewById(R.id.buttonGraph);
+        theDate = (TextView) findViewById(R.id.date);
+        buttonCalendar = (Button) findViewById(R.id.buttonCalendar);
+
+
 
         counterDrinkWater = new Counter();
         checkDate();
         updateUI();
+
+
+
     }
 
     /**
@@ -78,6 +91,13 @@ public class MainActivity extends AppCompatActivity {
     public void buttonGraph(View view) {
 
     }
+
+    public void goToCalendar (View view) {
+        Intent intent = new Intent(this, Calendar.class);
+        CalendarView calendarView = (CalendarView) findViewById(R.id.calendarView);
+        startActivity(intent);
+    }
+
 
     public void checkDate() {
         Calendar dateNow = Calendar.getInstance();
