@@ -4,4 +4,5 @@
     <string name="water_total">Total</string>
     <string name="edit_age">Age</string>
     <string name="edit_weight">Weight</string>
+    <string name="textview_estimate">Estimated water</string>
 </resources>

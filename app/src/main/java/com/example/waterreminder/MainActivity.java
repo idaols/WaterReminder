@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView textViewCurrentValue;
     private EditText editTextWaterAmount;
     private Button buttonAddWater;
+    private Button buttonGraph;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         editTextWaterAmount = findViewById(R.id.editTextWaterAmount);
         textViewCurrentValue = findViewById(R.id.textViewCurrentValue);
         buttonAddWater = findViewById(R.id.buttonAddWater);
+        buttonGraph = findViewById(R.id.buttonGraph);
 
         counterDrinkWater = new Counter();
         updateUI();
@@ -45,6 +47,11 @@ public class MainActivity extends AppCompatActivity {
         float value = Float.parseFloat(editTextWaterAmount.getText().toString());
         counterDrinkWater.addDrankWater(value);
         updateUI();
+    }
+
+    public void buttonGraph(View view) {
+
+
     }
 
     /**
