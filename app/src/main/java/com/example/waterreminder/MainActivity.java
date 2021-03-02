@@ -2,6 +2,8 @@ package com.example.waterreminder;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,43 +17,55 @@ import android.widget.TextView;
  */
 public class MainActivity extends AppCompatActivity {
 
+    private float waterAmount;
     private Counter counterDrinkWater;
-
     private TextView textViewCurrentValue;
-    private EditText editTextAddWater;
+    private EditText editTextWaterAmount;
     private Button buttonAddWater;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d("test", "water");
+
         setContentView(R.layout.activity_main);
 
-        editTextAddWater = findViewById(R.id.editTextAddWater);
+        editTextWaterAmount = findViewById(R.id.editTextWaterAmount);
         textViewCurrentValue = findViewById(R.id.textViewCurrentValue);
-        buttonAddWater = findViewById(R.id.buttonAddWater);
+        buttonAddWater = (Button) findViewById(R.id.buttonAddWater);
 
         counterDrinkWater = new Counter();
         updateUI();
     }
 
     /**
-     * Method for add button.
+     * This is a method for the button. By pressing the button it will add the added number to
+     * total amount.
      * @param view
      */
 
-    public void addWaterButton(View view) {
-        counterDrinkWater.addDrankWater();
+    public void buttonAddWater(View view) {
+        float value = Float.parseFloat(editTextWaterAmount.getText().toString());
+
+        counterDrinkWater.addDrankWater(value);
         updateUI();
     }
 
+
+
     /**
-     * Method for updating the amount of water.
+     * This is a method for updating text view component.
      */
 
     private void updateUI() {
-        TextView tv = findViewById(R.id.textViewCurrentValue);
-        tv.setText(Float.toString(counterDrinkWater.getDrankWaterValue()));
+        TextView textView = findViewById(R.id.textViewCurrentValue);
+        textView.setText(Float.toString(counterDrinkWater.getDrankWaterValue()));
 
     }
+
+
+
+
+
 }
