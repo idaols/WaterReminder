@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
     private Counter counterDrinkWater;
 
     private TextView textViewCurrentValue;
-    private TextView theDate;
     private EditText editTextWaterAmount;
     private Button buttonAddWater;
     private Button buttonGraph;
@@ -53,8 +52,7 @@ public class MainActivity extends AppCompatActivity {
         textViewCurrentValue = findViewById(R.id.textViewCurrentValue);
         buttonAddWater = findViewById(R.id.buttonAddWater);
         buttonGraph = findViewById(R.id.buttonGraph);
-        theDate = (TextView) findViewById(R.id.date);
-        buttonCalendar = (Button) findViewById(R.id.buttonCalendar);
+        buttonCalendar = findViewById(R.id.buttonCalendar);
 
 
 
@@ -94,7 +92,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void goToCalendar (View view) {
         Intent intent = new Intent(this, Calendar.class);
-        CalendarView calendarView = (CalendarView) findViewById(R.id.calendarView);
+        CalendarView calendarView = findViewById(R.id.calendarView);
+
         startActivity(intent);
     }
 
