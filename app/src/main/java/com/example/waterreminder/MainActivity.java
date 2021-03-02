@@ -2,12 +2,22 @@ package com.example.waterreminder;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.SharedPreferences;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
+import static android.provider.Settings.System.DATE_FORMAT;
 
 /**
  * @author Jenna
@@ -22,9 +32,14 @@ public class MainActivity extends AppCompatActivity {
     private Button buttonAddWater;
     private Button buttonGraph;
 
+    private SharedPreferences sharedPreferences;
+    private final String sharePreferencesName = "weekdayStore";
+    private final String weekDay = "weekDay";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         Log.d("test", "water");
         setContentView(R.layout.activity_main);
 
@@ -34,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         buttonGraph = findViewById(R.id.buttonGraph);
 
         counterDrinkWater = new Counter();
+        checkDate();
         updateUI();
     }
 
@@ -44,14 +60,49 @@ public class MainActivity extends AppCompatActivity {
      */
 
     public void buttonAddWater(View view) {
-        float value = Float.parseFloat(editTextWaterAmount.getText().toString());
-        counterDrinkWater.addDrankWater(value);
+        Log.d("moro", "day");
+
+        try {
+            float value = Float.parseFloat(editTextWaterAmount.getText().toString());
+            counterDrinkWater.addDrankWater(value);
+        }
+        catch (Exception e) {
+            float value = 0;
+            counterDrinkWater.addDrankWater(value);
+        }
+
+
         updateUI();
     }
 
     public void buttonGraph(View view) {
 
+    }
 
+    public void checkDate() {
+        Calendar dateNow = Calendar.getInstance();
+        int weekdayNow = dateNow.get(Calendar.DAY_OF_WEEK);
+
+        sharedPreferences = getSharedPreferences(sharePreferencesName, Activity.MODE_PRIVATE);
+
+        if (!sharedPreferences.contains(weekDay)) {
+            SharedPreferences.Editor prefEditor = sharedPreferences.edit();
+            prefEditor.putInt(weekDay, dateNow.get(Calendar.DAY_OF_WEEK));
+            prefEditor.commit();
+        } else {
+            SharedPreferences.Editor prefEditor = sharedPreferences.edit();
+            if (weekdayNow != sharedPreferences.getInt(weekDay, 0)) {
+                resetCalculator();
+                prefEditor.putInt(weekDay, dateNow.get(Calendar.DAY_OF_WEEK));
+                prefEditor.commit();
+            }
+        }
+
+
+    }
+
+    public void resetCalculator() {
+        counterDrinkWater.reset();
     }
 
     /**
@@ -60,7 +111,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateUI() {
         TextView tv = findViewById(R.id.textViewCurrentValue);
-        tv.setText(Float.toString(counterDrinkWater.getDrankWaterValue()));
+        Float value = counterDrinkWater.getDrankWaterValue();
+        if (value == -1) {
+            tv.setText("You are drunk!");
+        } else {
+            tv.setText(Float.toString(counterDrinkWater.getDrankWaterValue()));
+        }
+
 
     }
 }

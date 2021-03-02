@@ -1,5 +1,7 @@
 package com.example.waterreminder;
 
+import android.widget.TextView;
+
 /**
  * This class counts the amount of water that user should drink daily.
  * @author ida
@@ -10,6 +12,7 @@ public class Counter {
     private UserData user;
     private float waterAmount;
     private float drankWater;
+    private boolean warning;
 
     public Counter() {
         this.user = user;
@@ -38,7 +41,11 @@ public class Counter {
      * Method adds entered value of drank water to currentValue
      */
     public void addDrankWater(float addWaterAmount) {
-        this.drankWater = this.drankWater + addWaterAmount;
+        if (addWaterAmount < 6000) {
+            this.drankWater = this.drankWater + addWaterAmount;
+        } else {
+            warning = true;
+        }
     }
 
     /**
@@ -46,8 +53,13 @@ public class Counter {
      * @return reference to currentValue after adding drunk water amount
      */
     public float getDrankWaterValue() {
-        return this.drankWater;
+        if (warning == false) {
+            return this.drankWater;
+        } else {
+            return -1;
+        }
     }
+
 
     /**
      * resets currentValue to zero
