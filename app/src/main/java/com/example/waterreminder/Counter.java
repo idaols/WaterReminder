@@ -36,7 +36,8 @@ public class Counter {
     }
 
     /**
-     * Method adds entered value of drank water to currentValue
+     * Method adds entered amount of drank water to drankWater variable
+     * If user adds value of 6000 or more, counter sends a warning message
      */
     public void addDrankWater(float addWaterAmount) {
         if (addWaterAmount < 6000) {
@@ -48,7 +49,8 @@ public class Counter {
 
     /**
      * Returns how much water has been drunk
-     * @return reference to currentValue after adding drunk water amount
+     * If user adds value of 6000 or more, counter returns -1 and a warning message appears
+     * @return reference to drankWater after adding drunk water amount
      */
     public float getDrankWaterValue() {
         if (warning == false) {
@@ -60,7 +62,7 @@ public class Counter {
 
 
     /**
-     * resets currentValue to zero
+     * resets drankWater value to zero
      */
     public void reset() {
         this.drankWater = 0;

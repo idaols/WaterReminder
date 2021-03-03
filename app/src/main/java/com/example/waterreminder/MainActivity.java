@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.Calendar;
@@ -25,11 +26,11 @@ public class MainActivity extends AppCompatActivity {
     private Counter counterDrinkWater;
 
     private TextView textViewCurrentValue;
-    private TextView theDate;
     private EditText editTextWaterAmount;
-    private Button buttonAddWater;
+    private ImageButton buttonAddWater;
+    private ImageButton buttonSettings;
     private Button buttonGraph;
-    private Button btnGoCalendar;
+    private ImageButton buttonGoCalendar;
 
 
     private SharedPreferences sharedPreferences;
@@ -43,24 +44,18 @@ public class MainActivity extends AppCompatActivity {
         Log.d("test", "water");
         setContentView(R.layout.activity_main);
 
-        theDate = (TextView) findViewById(R.id.date);
-        btnGoCalendar = (Button) findViewById(R.id.btnGoCalendar);
         editTextWaterAmount = findViewById(R.id.editTextWaterAmount);
         textViewCurrentValue = findViewById(R.id.textViewCurrentValue);
-        buttonAddWater = findViewById(R.id.buttonAddWater);
+        buttonGoCalendar = findViewById(R.id.buttonGoCalendar);
+        buttonAddWater = findViewById(R.id.imageButtonAdd);
         buttonGraph = findViewById(R.id.buttonGraph);
+        buttonSettings = findViewById(R.id.imageButtonSettings);
 
-        /**
-         * Returns the date from CalendarView when day is pressed
-         */
-        Intent incomingIntent = getIntent();
-        String date = incomingIntent.getStringExtra("date");
-        theDate.setText(date);
 
         /**
          * When calendar button is pressed, starts CalendarActivity
          */
-        btnGoCalendar.setOnClickListener(new View.OnClickListener() {
+        buttonGoCalendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, CalendarActivity.class);
@@ -80,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
      */
 
     public void buttonAddWater(View view) {
-        Log.d("moro", "day");
+        Log.d("test", "day");
 
         try {
             float value = Float.parseFloat(editTextWaterAmount.getText().toString());

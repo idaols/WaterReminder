@@ -29,8 +29,8 @@ public class CalendarActivity extends AppCompatActivity {
                 String date = (i1 + 1) + "/" + i2 + "/" + i;
                 Log.d(TAG, "onSelectedDayChange: mm/dd/yyyy " + date);
 
-                Intent intent = new Intent(CalendarActivity.this, MainActivity.class);
-                intent.putExtra("date", date);
+                Intent intent = new Intent(CalendarActivity.this, DrankWaterPerDayActivity.class);
+                //intent.putExtra("date", date);
                 startActivity(intent);
             }
 

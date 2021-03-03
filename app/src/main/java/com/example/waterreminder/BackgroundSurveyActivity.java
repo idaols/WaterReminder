@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,7 +25,7 @@ public class BackgroundSurveyActivity extends AppCompatActivity {
     private TextView textViewEstimateAmount;
     private EditText editTextAge;
     private EditText editTextWeight;
-    private Button buttonSave;
+    private ImageButton buttonSave;
 
     public static final String SHARED_PREFS = "shared prefs";
     public static final String AGE_LOG = "saved age";
@@ -44,7 +45,7 @@ public class BackgroundSurveyActivity extends AppCompatActivity {
         textViewEstimateAmount = findViewById(R.id.textViewEstimateAmount);
         editTextAge = findViewById(R.id.editTextAge);
         editTextWeight = findViewById(R.id.editTextWeight);
-        buttonSave = findViewById(R.id.buttonSave);
+        buttonSave = findViewById(R.id.imageButtonSave);
 
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         int age = sharedPreferences.getInt(AGE_LOG, 0);
