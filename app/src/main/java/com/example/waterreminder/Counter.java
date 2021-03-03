@@ -9,13 +9,11 @@ import android.widget.TextView;
  */
 
 public class Counter {
-    private UserData user;
     private float waterAmount;
     private float drankWater;
     private boolean warning;
 
     public Counter() {
-        this.user = user;
         //this.waterAmount = countWaterAmount();
         this.drankWater = 0;
     }
@@ -24,8 +22,8 @@ public class Counter {
      * Counts the amount of water that should be drank daily
      * @return reference to waterAmount
      */
-    private float countWaterAmount() {
-        waterAmount = (this.user.getAge() * this.user.getWeight()) / 1000;
+    public float countWaterAmount(int age, int weight) {
+        waterAmount = (age * weight) / 1000.0f;
         return waterAmount;
     }
 

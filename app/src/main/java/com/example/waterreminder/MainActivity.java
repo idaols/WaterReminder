@@ -15,7 +15,7 @@ import android.widget.TextView;
 import java.util.Calendar;
 
 /**
- * @author Jenna
+ * @author Jenna, Ida and Henna
  * This main class implements the apps main screen, where user can add the amount of drunk water.
  */
 public class MainActivity extends AppCompatActivity {
@@ -71,9 +71,6 @@ public class MainActivity extends AppCompatActivity {
         counterDrinkWater = new Counter();
         checkDate();
         updateUI();
-
-
-
     }
 
     /**
@@ -93,10 +90,13 @@ public class MainActivity extends AppCompatActivity {
             float value = 0;
             counterDrinkWater.addDrankWater(value);
         }
-
-
         updateUI();
     }
+
+    /**
+     * Method for settings button. By pressing this button it will start settings activity.
+     * @param view
+     */
 
     public void buttonSettings(View view) {
         Intent intent = new Intent(this, BackgroundSurveyActivity.class);
@@ -106,8 +106,6 @@ public class MainActivity extends AppCompatActivity {
     public void buttonGraph(View view) {
 
     }
-
-
 
     public void checkDate() {
         Calendar dateNow = Calendar.getInstance();
@@ -127,8 +125,6 @@ public class MainActivity extends AppCompatActivity {
                 prefEditor.commit();
             }
         }
-
-
     }
 
     public void resetCalculator() {
@@ -147,7 +143,5 @@ public class MainActivity extends AppCompatActivity {
         } else {
             tv.setText(Float.toString(counterDrinkWater.getDrankWaterValue()));
         }
-
-
     }
 }

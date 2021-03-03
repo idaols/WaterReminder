@@ -3,6 +3,7 @@ package com.example.waterreminder;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,7 +12,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 /**
- * This class is for the background survey settings.
+ * This class is for the background survey settings. Settings are saved with "Save"- button and will
+ * appear when user goes back to setting. Info can be updated and saved again.
  * @author Jenna
  */
 
@@ -37,13 +39,19 @@ public class BackgroundSurveyActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         counterEstimate = new Counter();
 
         textViewEstimateAmount = findViewById(R.id.textViewEstimateAmount);
         editTextAge = findViewById(R.id.editTextAge);
         editTextWeight = findViewById(R.id.editTextWeight);
         buttonSave = findViewById(R.id.buttonSave);
+
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        int age = sharedPreferences.getInt(AGE_LOG, 0);
+        editTextAge.setText(Integer.toString(age));
+        int weight = sharedPreferences.getInt(WEIGHT_LOG, 0);
+        editTextWeight.setText(Integer.toString(weight));
+        counterEstimate.countWaterAmount(age, weight);
 
         updateUI();
     }
@@ -55,13 +63,14 @@ public class BackgroundSurveyActivity extends AppCompatActivity {
      */
 
     public void buttonSave(View view) {
+        Log.d("testi", "nappia painttu");
 
         EditText editAge = findViewById(R.id.editTextAge);
         Integer age = Integer.parseInt(editAge.getText().toString());
         EditText editWeight = findViewById(R.id.editTextWeight);
         Integer weight = Integer.parseInt(editTextWeight.getText().toString());
 
-        counterEstimate.getWaterAmount();
+        counterEstimate.countWaterAmount(age, weight);
         updateUI();
 
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
