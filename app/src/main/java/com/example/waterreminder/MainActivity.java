@@ -32,10 +32,12 @@ public class MainActivity extends AppCompatActivity {
     private Counter counterDrinkWater;
 
     private TextView textViewCurrentValue;
+    private TextView theDate;
     private EditText editTextWaterAmount;
     private Button buttonAddWater;
     private Button buttonGraph;
-    private Button buttonCalendar;
+    private Button btnGoCalendar;
+
 
     private SharedPreferences sharedPreferences;
     private final String sharePreferencesName = "weekdayStore";
@@ -48,13 +50,24 @@ public class MainActivity extends AppCompatActivity {
         Log.d("test", "water");
         setContentView(R.layout.activity_main);
 
+        theDate = (TextView) findViewById(R.id.date);
+        btnGoCalendar = (Button) findViewById(R.id.btnGoCalendar);
         editTextWaterAmount = findViewById(R.id.editTextWaterAmount);
         textViewCurrentValue = findViewById(R.id.textViewCurrentValue);
         buttonAddWater = findViewById(R.id.buttonAddWater);
         buttonGraph = findViewById(R.id.buttonGraph);
-        buttonCalendar = findViewById(R.id.buttonCalendar);
 
+        Intent incomingIntent = getIntent();
+        String date = incomingIntent.getStringExtra("date");
+        theDate.setText(date);
 
+        btnGoCalendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, CalendarActivity.class);
+                startActivity(intent);
+            }
+        });
 
         counterDrinkWater = new Counter();
         checkDate();
@@ -90,12 +103,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void goToCalendar (View view) {
-        Intent intent = new Intent(this, Calendar.class);
-        CalendarView calendarView = findViewById(R.id.calendarView);
-
-        startActivity(intent);
-    }
 
 
     public void checkDate() {
