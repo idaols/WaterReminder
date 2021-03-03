@@ -57,10 +57,16 @@ public class MainActivity extends AppCompatActivity {
         buttonAddWater = findViewById(R.id.buttonAddWater);
         buttonGraph = findViewById(R.id.buttonGraph);
 
+        /**
+         * Returns the date from CalendarView when day is pressed
+         */
         Intent incomingIntent = getIntent();
         String date = incomingIntent.getStringExtra("date");
         theDate.setText(date);
 
+        /**
+         * When calendar button is pressed, starts CalendarActivity
+         */
         btnGoCalendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
