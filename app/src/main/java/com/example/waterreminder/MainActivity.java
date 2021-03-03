@@ -2,24 +2,13 @@ package com.example.waterreminder;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.TextView;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-
-import static android.provider.Settings.System.DATE_FORMAT;
 
 /**
  * @author Jenna
@@ -27,54 +16,26 @@ import static android.provider.Settings.System.DATE_FORMAT;
  */
 public class MainActivity extends AppCompatActivity {
 
-    private static final String TAG = "MainActivity";
-
     private Counter counterDrinkWater;
 
     private TextView textViewCurrentValue;
-    private TextView theDate;
     private EditText editTextWaterAmount;
     private Button buttonAddWater;
     private Button buttonGraph;
-    private Button btnGoCalendar;
-
-
-    private SharedPreferences sharedPreferences;
-    private final String sharePreferencesName = "weekdayStore";
-    private final String weekDay = "weekDay";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         Log.d("test", "water");
         setContentView(R.layout.activity_main);
 
-        theDate = (TextView) findViewById(R.id.date);
-        btnGoCalendar = (Button) findViewById(R.id.btnGoCalendar);
         editTextWaterAmount = findViewById(R.id.editTextWaterAmount);
         textViewCurrentValue = findViewById(R.id.textViewCurrentValue);
         buttonAddWater = findViewById(R.id.buttonAddWater);
         buttonGraph = findViewById(R.id.buttonGraph);
 
-        Intent incomingIntent = getIntent();
-        String date = incomingIntent.getStringExtra("date");
-        theDate.setText(date);
-
-        btnGoCalendar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, CalendarActivity.class);
-                startActivity(intent);
-            }
-        });
-
         counterDrinkWater = new Counter();
-        checkDate();
         updateUI();
-
-
-
     }
 
     /**
@@ -84,51 +45,20 @@ public class MainActivity extends AppCompatActivity {
      */
 
     public void buttonAddWater(View view) {
-        Log.d("moro", "day");
-
-        try {
-            float value = Float.parseFloat(editTextWaterAmount.getText().toString());
-            counterDrinkWater.addDrankWater(value);
-        }
-        catch (Exception e) {
-            float value = 0;
-            counterDrinkWater.addDrankWater(value);
-        }
-
-
+        float value = Float.parseFloat(editTextWaterAmount.getText().toString());
+        counterDrinkWater.addDrankWater(value);
         updateUI();
+    }
+
+    public void buttonSettings(View view) {
+        Intent intent = new Intent(this, BackgroundSurveyActivity.class);
+        startActivity(intent);
+
     }
 
     public void buttonGraph(View view) {
 
-    }
 
-
-
-    public void checkDate() {
-        Calendar dateNow = Calendar.getInstance();
-        int weekdayNow = dateNow.get(Calendar.DAY_OF_WEEK);
-
-        sharedPreferences = getSharedPreferences(sharePreferencesName, Activity.MODE_PRIVATE);
-
-        if (!sharedPreferences.contains(weekDay)) {
-            SharedPreferences.Editor prefEditor = sharedPreferences.edit();
-            prefEditor.putInt(weekDay, dateNow.get(Calendar.DAY_OF_WEEK));
-            prefEditor.commit();
-        } else {
-            SharedPreferences.Editor prefEditor = sharedPreferences.edit();
-            if (weekdayNow != sharedPreferences.getInt(weekDay, 0)) {
-                resetCalculator();
-                prefEditor.putInt(weekDay, dateNow.get(Calendar.DAY_OF_WEEK));
-                prefEditor.commit();
-            }
-        }
-
-
-    }
-
-    public void resetCalculator() {
-        counterDrinkWater.reset();
     }
 
     /**
@@ -137,13 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateUI() {
         TextView tv = findViewById(R.id.textViewCurrentValue);
-        Float value = counterDrinkWater.getDrankWaterValue();
-        if (value == -1) {
-            tv.setText("You are drunk!");
-        } else {
-            tv.setText(Float.toString(counterDrinkWater.getDrankWaterValue()));
-        }
-
+        tv.setText(Float.toString(counterDrinkWater.getDrankWaterValue()));
 
     }
 }

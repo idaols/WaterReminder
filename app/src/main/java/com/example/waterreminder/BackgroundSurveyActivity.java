@@ -1,5 +1,6 @@
 package com.example.waterreminder;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -10,8 +11,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 /**
- * This class is for the background survey. It will appear only once when user downloads and opens
- * the app for the first time.
+ * This class is for the background survey settings.
  * @author Jenna
  */
 
@@ -31,7 +31,11 @@ public class BackgroundSurveyActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_background_survey);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true); //arrow back to home screen.
+
+        Intent intent = getIntent();
 
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         counterEstimate = new Counter();
@@ -46,7 +50,7 @@ public class BackgroundSurveyActivity extends AppCompatActivity {
 
     /**
      * Method for save button. When user fills the info and presses the save button, it will
-     * calculate the estimated water amount and save the data for later usage.
+     * calculate the estimated water amount and save the data for later use.
      * @param view
      */
 
@@ -54,7 +58,11 @@ public class BackgroundSurveyActivity extends AppCompatActivity {
 
         EditText editAge = findViewById(R.id.editTextAge);
         Integer age = Integer.parseInt(editAge.getText().toString());
+        EditText editWeight = findViewById(R.id.editTextWeight);
         Integer weight = Integer.parseInt(editTextWeight.getText().toString());
+
+        counterEstimate.getWaterAmount();
+        updateUI();
 
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -62,7 +70,6 @@ public class BackgroundSurveyActivity extends AppCompatActivity {
         editor.putInt(AGE_LOG, age);
         editor.putInt(WEIGHT_LOG, weight);
         editor.commit();
-
     }
 
     /**
