@@ -2,9 +2,12 @@
     <string name="app_name">Water Reminder</string>
     <string name="add_water">Add water in ml</string>
     <string name="water_total">Total</string>
-    <string name="edit_age">Age</string>
-    <string name="edit_weight">Weight</string>
+    <string name="edit_age">Age in years</string>
+    <string name="edit_weight">Weight in kg</string>
     <string name="textview_estimate">Estimated water</string>
     <string name="textview_shoulddrink">You should drink daily</string>
     <string name="textview_liters">liters</string>
+    <string name="textview_age">years</string>
+    <string name="textview_weight">kg</string>
+    <string name="fakta_on_ett_eri_ihmiset_tarvitsevat_eri_m_r_n_vett_pysy_kseen_nestetasapainossa_veden_tarpeeseen_vaikuttavat_esimerkiksi_hikoilu_ilmasto_vaatteet_sek_aktiivisuustaso_my_s_jotkin_sairaudet_kuten_syd_ntaudit_ja_diabetes_vaikuttavat_tarvittavan_nesteytyksen_m_r_n_laskurit_ovat_tehty_suuntaa_antaviksi_hyv_nyrkkis_nt_on_juoda_ruoan_yhteydess_ja_silloin_kun_janottaa_useimmille_meist_se_riitt_yrit_kuitenkin_pysy_erossa_sokeroiduista_juomista_sill_ne_saattavat_sis_lt_huiman_m_r_n_kaloreita_toinen_tapa_selvitt_saatko_riitt_v_sti_nesteit_on_tarkastaa_virtsan_v_ri_mik_li_se_on_vaaleaa_luultavasti_nestetasapainosi_on_kunnossa_tumma_virtsa_voi_kertoa_ett_lis_nesteytys_ei_olisi_pahitteeksi_l_hde_terveydentukena_fi">Fakta on, että eri ihmiset tarvitsevat eri määrän vettä pysyäkseen nestetasapainossa. Veden tarpeeseen vaikuttavat esimerkiksi hikoilu, ilmasto, vaatteet sekä aktiivisuustaso. Myös jotkin sairaudet, kuten sydäntaudit ja diabetes, vaikuttavat tarvittavan nesteytyksen määrään. Laskurit ovat tehty suuntaa-antaviksi. Hyvä nyrkkisääntö on juoda ruoan yhteydessä ja silloin, kun janottaa. Useimmille meistä se riittää. Yritä kuitenkin pysyä erossa sokeroiduista juomista, sillä ne saattavat sisältää huiman määrän kaloreita. Toinen tapa selvittää, saatko riittävästi nesteitä, on tarkastaa virtsan väri. Mikäli se on vaaleaa, luultavasti nestetasapainosi on kunnossa. Tumma virtsa voi kertoa, että lisänesteytys ei olisi pahitteeksi. Lähde: terveydentukena.fi</string>
 </resources>
