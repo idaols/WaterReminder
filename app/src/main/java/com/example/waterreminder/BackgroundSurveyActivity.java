@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,6 +24,8 @@ public class BackgroundSurveyActivity extends AppCompatActivity {
     private Counter counterEstimate;
 
     private TextView textViewEstimateAmount;
+    private TextView textViewAge;
+    private TextView textViewWeight;
     private EditText editTextAge;
     private EditText editTextWeight;
     private ImageButton buttonSave;
@@ -44,6 +47,8 @@ public class BackgroundSurveyActivity extends AppCompatActivity {
         counterEstimate = new Counter();
 
         textViewEstimateAmount = findViewById(R.id.textViewEstimateAmount);
+        textViewAge = findViewById(R.id.textViewAge);
+        textViewWeight = findViewById(R.id.textViewWeight);
         editTextAge = findViewById(R.id.editTextAge);
         editTextWeight = findViewById(R.id.editTextWeight);
         buttonSave = findViewById(R.id.imageButtonSave);
@@ -84,6 +89,11 @@ public class BackgroundSurveyActivity extends AppCompatActivity {
         editor.commit();
     }
 
+    /**
+     * Method fo reset button. When clicked the calculator will reset.
+     * @param view
+     */
+
     public void buttonReset(View view) {
         counterEstimate.resetSettings();
         editTextAge.getText().clear();
@@ -107,6 +117,4 @@ public class BackgroundSurveyActivity extends AppCompatActivity {
         TextView textView = findViewById(R.id.textViewEstimateAmount);
         textView.setText(Float.toString(counterEstimate.getWaterAmount()));
     }
-
-
 }

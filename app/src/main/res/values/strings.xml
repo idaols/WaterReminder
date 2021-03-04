@@ -2,9 +2,11 @@
     <string name="app_name">Water Reminder</string>
     <string name="add_water">Add water in ml</string>
     <string name="water_total">Total</string>
-    <string name="edit_age">Age</string>
-    <string name="edit_weight">Weight</string>
+    <string name="edit_age">Age in years</string>
+    <string name="edit_weight">Weight in kg</string>
     <string name="textview_estimate">Estimated water</string>
     <string name="textview_shoulddrink">You should drink daily</string>
     <string name="textview_liters">liters</string>
+    <string name="textview_age">years</string>
+    <string name="textview_weight">kg</string>
 </resources>
