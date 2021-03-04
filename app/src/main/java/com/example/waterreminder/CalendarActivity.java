@@ -15,7 +15,10 @@ public class CalendarActivity extends AppCompatActivity {
 
     private CalendarView mCalendarView;
 
-
+    /**
+     * Shows calendar view and current day
+     * when pressed any day on calendar it shows another activity which shows drank water amount that day
+     */
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +33,6 @@ public class CalendarActivity extends AppCompatActivity {
                 Log.d(TAG, "onSelectedDayChange: mm/dd/yyyy " + date);
 
                 Intent intent = new Intent(CalendarActivity.this, DrankWaterPerDayActivity.class);
-                //intent.putExtra("date", date);
                 startActivity(intent);
             }
 

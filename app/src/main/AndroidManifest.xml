@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WaterReminder">
-        <activity android:name=".DrankWaterPerDayActivity"></activity>
+        <activity android:name=".DrankWaterPerDayActivity">
+                  android:parentActivityName=".CalendarActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".CalendarActivity"/>
+        </activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,6 +31,12 @@
         <activity
             android:name=".BackgroundSurveyActivity"
             android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity android:name=".InfoText"
+                  android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />

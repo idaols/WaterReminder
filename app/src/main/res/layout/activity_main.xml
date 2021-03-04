@@ -110,4 +110,16 @@
         app:layout_constraintHorizontal_bias="0.223"
         app:layout_constraintStart_toEndOf="@+id/textViewCurrentValue" />
 
+    <ImageButton
+        android:id="@+id/imageButtonInfo"
+        android:layout_width="68dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="16dp"
+        android:onClick="buttonInfo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

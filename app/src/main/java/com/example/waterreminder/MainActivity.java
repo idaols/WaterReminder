@@ -8,7 +8,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -33,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton buttonSettings;
     private ImageButton buttonReset;
     private ImageButton buttonGoCalendar;
+    private ImageButton buttonInfo;
 
 
     private SharedPreferences sharedPreferences;
@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         buttonAddWater = findViewById(R.id.imageButtonAdd);
         buttonSettings = findViewById(R.id.imageButtonSettings);
         buttonReset = findViewById(R.id.imageButtonReset);
+        buttonInfo = findViewById(R.id.imageButtonInfo);
 
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS_WATER, MODE_PRIVATE);
         float water = sharedPreferences.getFloat(WATER_LOG, 0);
@@ -115,6 +116,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void buttonSettings(View view) {
         Intent intent = new Intent(this, BackgroundSurveyActivity.class);
+        startActivity(intent);
+    }
+
+    public void buttonInfo (View view) {
+        Intent intent = new Intent(this, InfoText.class);
         startActivity(intent);
     }
 
