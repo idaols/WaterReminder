@@ -2,11 +2,11 @@
     <string name="app_name">Water Reminder</string>
     <string name="add_water">Add water in ml</string>
     <string name="water_total">Total</string>
-    <string name="edit_age">Age</string>
-    <string name="edit_weight">Weight</string>
+    <string name="edit_age">Age in years</string>
+    <string name="edit_weight">Weight in kg</string>
     <string name="textview_estimate">Estimated water</string>
     <string name="textview_shoulddrink">You should drink daily</string>
     <string name="textview_liters">liters</string>
-    <string name="infotext">Fakta on, että eri ihmiset tarvitsevat eri määrän vettä pysyäkseen nestetasapainossa. Veden tarpeeseen vaikuttavat esimerkiksi hikoilu, ilmasto, vaatteet sekä aktiivisuustaso. Myös jotkin sairaudet, kuten sydäntaudit ja diabetes, vaikuttavat tarvittavan nesteytyksen määrään. Laskurit ovat tehty suuntaa-antaviksi.
-        Hyvä nyrkkisääntö on juoda ruoan yhteydessä ja silloin, kun janottaa. Useimmille meistä se riittää. Yritä kuitenkin pysyä erossa sokeroiduista juomista, sillä ne saattavat sisältää huiman määrän kaloreita. Toinen tapa selvittää, saatko riittävästi nesteitä, on tarkastaa virtsan väri. Mikäli se on vaaleaa, luultavasti nestetasapainosi on kunnossa. Tumma virtsa voi kertoa, että lisänesteytys ei olisi pahitteeksi. Lähde: Terveydentukena.fi.</string>
+    <string name="textview_age">years</string>
+    <string name="textview_weight">kg</string>
 </resources>
