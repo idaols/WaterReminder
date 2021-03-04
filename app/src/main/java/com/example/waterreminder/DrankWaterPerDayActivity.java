@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 public class DrankWaterPerDayActivity extends AppCompatActivity {
-    private TextView theDate;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,12 +17,11 @@ public class DrankWaterPerDayActivity extends AppCompatActivity {
 
 
         /**
-         * Returns the date from CalendarView when day is pressed
+         * Returns the drank water amount from CalendarView when that day is pressed
          */
         Intent intent = getIntent();
 
 
-        //String date = incomingIntent.getStringExtra("date");
-        //theDate.setText(date);
+
     }
 }
