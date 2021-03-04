@@ -26,6 +26,7 @@ public class BackgroundSurveyActivity extends AppCompatActivity {
     private EditText editTextAge;
     private EditText editTextWeight;
     private ImageButton buttonSave;
+    private ImageButton buttonReset;
 
     public static final String SHARED_PREFS = "shared prefs";
     public static final String AGE_LOG = "saved age";
@@ -46,6 +47,7 @@ public class BackgroundSurveyActivity extends AppCompatActivity {
         editTextAge = findViewById(R.id.editTextAge);
         editTextWeight = findViewById(R.id.editTextWeight);
         buttonSave = findViewById(R.id.imageButtonSave);
+        buttonReset = findViewById(R.id.imageButtonReset);
 
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         int age = sharedPreferences.getInt(AGE_LOG, 0);
@@ -64,7 +66,7 @@ public class BackgroundSurveyActivity extends AppCompatActivity {
      */
 
     public void buttonSave(View view) {
-        Log.d("testi", "nappia painttu");
+        Log.d("testi", "nappia painettu");
 
         EditText editAge = findViewById(R.id.editTextAge);
         Integer age = Integer.parseInt(editAge.getText().toString());
@@ -80,6 +82,21 @@ public class BackgroundSurveyActivity extends AppCompatActivity {
         editor.putInt(AGE_LOG, age);
         editor.putInt(WEIGHT_LOG, weight);
         editor.commit();
+    }
+
+    public void buttonReset(View view) {
+        counterEstimate.resetSettings();
+        editTextAge.getText().clear();
+        editTextWeight.getText().clear();
+
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putInt(AGE_LOG, 0);
+        editor.putInt(WEIGHT_LOG, 0);
+        editor.commit();
+
+        updateUI();
     }
 
     /**

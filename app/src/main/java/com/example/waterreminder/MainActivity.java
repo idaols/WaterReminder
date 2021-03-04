@@ -29,13 +29,16 @@ public class MainActivity extends AppCompatActivity {
     private EditText editTextWaterAmount;
     private ImageButton buttonAddWater;
     private ImageButton buttonSettings;
-    private Button buttonGraph;
+    private ImageButton buttonReset;
     private ImageButton buttonGoCalendar;
 
 
     private SharedPreferences sharedPreferences;
     private final String sharePreferencesName = "weekdayStore";
     private final String weekDay = "weekDay";
+
+    public static final String SHARED_PREFS_WATER = "shared prefs water";
+    public static final String WATER_LOG = "saved added water";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,12 +47,19 @@ public class MainActivity extends AppCompatActivity {
         Log.d("test", "water");
         setContentView(R.layout.activity_main);
 
+        counterDrinkWater = new Counter();
+
         editTextWaterAmount = findViewById(R.id.editTextWaterAmount);
         textViewCurrentValue = findViewById(R.id.textViewCurrentValue);
         buttonGoCalendar = findViewById(R.id.buttonGoCalendar);
         buttonAddWater = findViewById(R.id.imageButtonAdd);
-        buttonGraph = findViewById(R.id.buttonGraph);
         buttonSettings = findViewById(R.id.imageButtonSettings);
+        buttonReset = findViewById(R.id.imageButtonReset);
+
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS_WATER, MODE_PRIVATE);
+        float water = sharedPreferences.getFloat(WATER_LOG, 0);
+        editTextWaterAmount.setHint("Add water in ml");
+        counterDrinkWater.addDrankWater(water);
 
 
         /**
@@ -63,19 +73,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        counterDrinkWater = new Counter();
         checkDate();
         updateUI();
     }
 
     /**
      * Method for add button. By pressing the button it will add the added number to
-     * total amount
+     * total amount and saves it.
      * @param view
      */
 
     public void buttonAddWater(View view) {
         Log.d("test", "day");
+
+        EditText editTextWaterAmount = findViewById(R.id.editTextWaterAmount);
 
         try {
             float value = Float.parseFloat(editTextWaterAmount.getText().toString());
@@ -85,7 +96,14 @@ public class MainActivity extends AppCompatActivity {
             float value = 0;
             counterDrinkWater.addDrankWater(value);
         }
+
         updateUI();
+
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS_WATER, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putFloat(WATER_LOG, counterDrinkWater.getDrankWaterValue());
+        editor.commit();
     }
 
     /**
@@ -98,8 +116,16 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void buttonGraph(View view) {
+    public void buttonReset(View view) {
+        counterDrinkWater.reset();
 
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS_WATER, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putFloat(WATER_LOG, 0);
+        editor.commit();
+
+        updateUI();
     }
 
     public void checkDate() {
