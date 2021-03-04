@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText editTextWaterAmount;
     private ImageButton buttonAddWater;
     private ImageButton buttonSettings;
-    private Button buttonGraph;
+    private ImageButton buttonReset;
     private ImageButton buttonGoCalendar;
 
 
@@ -53,12 +53,12 @@ public class MainActivity extends AppCompatActivity {
         textViewCurrentValue = findViewById(R.id.textViewCurrentValue);
         buttonGoCalendar = findViewById(R.id.buttonGoCalendar);
         buttonAddWater = findViewById(R.id.imageButtonAdd);
-        buttonGraph = findViewById(R.id.buttonGraph);
         buttonSettings = findViewById(R.id.imageButtonSettings);
+        buttonReset = findViewById(R.id.imageButtonReset);
 
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS_WATER, MODE_PRIVATE);
         float water = sharedPreferences.getFloat(WATER_LOG, 0);
-        editTextWaterAmount.setText(Float.toString(water));
+        editTextWaterAmount.setHint("Add water in ml");
         counterDrinkWater.addDrankWater(water);
 
 
@@ -87,7 +87,6 @@ public class MainActivity extends AppCompatActivity {
         Log.d("test", "day");
 
         EditText editTextWaterAmount = findViewById(R.id.editTextWaterAmount);
-        Float water = Float.parseFloat(editTextWaterAmount.getText().toString());
 
         try {
             float value = Float.parseFloat(editTextWaterAmount.getText().toString());
@@ -103,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS_WATER, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        editor.putFloat(WATER_LOG, water);
+        editor.putFloat(WATER_LOG, counterDrinkWater.getDrankWaterValue());
         editor.commit();
     }
 
@@ -117,8 +116,16 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void buttonGraph(View view) {
+    public void buttonReset(View view) {
+        counterDrinkWater.reset();
 
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS_WATER, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putFloat(WATER_LOG, 0);
+        editor.commit();
+
+        updateUI();
     }
 
     public void checkDate() {

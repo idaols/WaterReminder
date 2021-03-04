@@ -69,5 +69,8 @@ public class Counter {
     }
 
 
+    public void resetSettings() {
+        this.waterAmount = 0;
+    }
 
 }

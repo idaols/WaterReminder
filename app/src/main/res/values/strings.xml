@@ -5,4 +5,6 @@
     <string name="edit_age">Age</string>
     <string name="edit_weight">Weight</string>
     <string name="textview_estimate">Estimated water</string>
+    <string name="textview_shoulddrink">You should drink daily</string>
+    <string name="textview_liters">liters</string>
 </resources>
