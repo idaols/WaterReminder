@@ -11,12 +11,14 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
 /**
  * @author Jenna, Ida and Henna
- * This main class implements the apps main screen, where user can add the amount of drunk water.
+ * This main class implements the apps main screen, where user can add the amount of drunk water,
+ * change setting and view calendar.
  */
 public class MainActivity extends AppCompatActivity {
 

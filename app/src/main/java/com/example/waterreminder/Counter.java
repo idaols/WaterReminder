@@ -22,7 +22,7 @@ public class Counter {
      * Counts the amount of water that should be drank daily
      * @return reference to waterAmount
      */
-    public float countWaterAmount(int age, int weight) {
+    public float countWaterAmount(int age , int weight) {
         waterAmount = (age * weight) / 1000.0f;
         return waterAmount;
     }
