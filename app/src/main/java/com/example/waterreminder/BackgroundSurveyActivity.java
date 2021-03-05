@@ -75,6 +75,8 @@ public class BackgroundSurveyActivity extends AppCompatActivity {
     public void buttonSave(View view) {
         Log.d("testi", "nappia painettu");
 
+        Toast.makeText(BackgroundSurveyActivity.this, "Saved!", Toast.LENGTH_SHORT).show();
+
         EditText editAge = findViewById(R.id.editTextAge);
         Integer age = Integer.parseInt(editAge.getText().toString());
         EditText editWeight = findViewById(R.id.editTextWeight);

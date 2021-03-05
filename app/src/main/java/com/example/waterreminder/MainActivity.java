@@ -98,6 +98,8 @@ public class MainActivity extends AppCompatActivity {
     public void buttonAddWater(View view) {
         Log.d("test", "day");
 
+        Toast.makeText(MainActivity.this, "Good job!", Toast.LENGTH_SHORT).show();
+
         EditText editTextWaterAmount = findViewById(R.id.editTextWaterAmount);
 
         try {
