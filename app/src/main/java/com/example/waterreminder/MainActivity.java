@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        Log.d(TAG, "Hugeluukkanen: mm/dd/yyyy " + getDate());
+        Log.d(TAG, "TimeDisplay: mm/dd/yyyy " + getDate());
         editor.putFloat(getDate(), counterDrinkWater.getDrankWaterValue());
         editor.commit();
     }

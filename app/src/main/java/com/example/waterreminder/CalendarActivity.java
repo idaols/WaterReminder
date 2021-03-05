@@ -1,13 +1,21 @@
 package com.example.waterreminder;
 
+import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.View;
 import android.widget.CalendarView;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,16 +33,20 @@ public class CalendarActivity extends AppCompatActivity {
     private CalendarView mCalendarView;
     private TextView theDate;
 
+
     public static final String SHARED_PREFS_WATER = "shared prefs water";
 
     /**
      * Shows calendar view and current day
-     * when pressed any day on calendar it shows another activity which shows drank water amount that day
+     * when pressed any day on calendar it shows the drank water amount of that day under the calendar
      */
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calendar_layout);
+        createNotificationChannel();
+
+        ImageButton remindMe = findViewById(R.id.imageButtonReminder);
 
         mCalendarView = (CalendarView) findViewById(R.id.calendarView);
 
@@ -52,7 +64,6 @@ public class CalendarActivity extends AppCompatActivity {
                 theDate.setText(Float.toString(sharedPreferences.getFloat(date, 0)));
 
 
-
                 //Intent intent = new Intent(CalendarActivity.this, DrankWaterPerDayActivity.class);
                 //startActivity(intent);
             }
@@ -60,5 +71,45 @@ public class CalendarActivity extends AppCompatActivity {
 
         });
 
+
+        remindMe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(CalendarActivity.this, "Reminder Set!", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(CalendarActivity.this, Reminderbroadcast.class);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(CalendarActivity.this, 0, intent, 0);
+
+                AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+
+                long timeAtButtonClick = System.currentTimeMillis();
+
+                long tenSecondsInMillis = 1000 * 10;
+
+                alarmManager.set(AlarmManager.RTC_WAKEUP, timeAtButtonClick + tenSecondsInMillis, pendingIntent);
+            }
+        });
     }
+
+
+    private void createNotificationChannel() {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "LemubitReminderChannel";
+            String description = "Channel for WaterPal reminder";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("notifyLemubit", name, importance);
+            channel.setDescription(description);
+
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
+
+
+
+
+
 }
+
+
