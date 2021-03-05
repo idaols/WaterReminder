@@ -1,5 +1,8 @@
 <resources>
-    <string name="app_name">Water Reminder</string>
+    <string name="app_name">WaterPal</string>
+    <string name="settings_name">Settings</string>
+    <string name="info_name">Info</string>
+    <string name="calendar_name">Calendar</string>
     <string name="add_water">Add water in ml</string>
     <string name="water_total">Total</string>
     <string name="edit_age">Age in years</string>

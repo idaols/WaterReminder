@@ -8,17 +8,16 @@ import android.widget.TextView;
 
 public class DrankWaterPerDayActivity extends AppCompatActivity {
 
+    private TextView dailyAmount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drank_water_per_day);
 
+        dailyAmount = findViewById(R.id.textViewTheDate);
+        dailyAmount.setText("Kukkuu");
 
-
-        /**
-         * Returns the drank water amount from CalendarView when that day is pressed
-         */
         Intent intent = getIntent();
 
 
