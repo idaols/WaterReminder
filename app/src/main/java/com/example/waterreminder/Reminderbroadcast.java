@@ -8,6 +8,13 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 public class Reminderbroadcast extends BroadcastReceiver {
+
+    /**
+     *BroadcastReceiver set for running the code to display the notification
+     * @param context
+     * @param intent
+     */
+
     @Override
     public void onReceive(Context context, Intent intent) {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "notifyLemubit")

@@ -158,6 +158,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * Method for info button. By pressing this button it will display info activity.
+     * @param view
+     */
+
     public void buttonInfo (View view) {
         Intent intent = new Intent(this, InfoText.class);
         startActivity(intent);
