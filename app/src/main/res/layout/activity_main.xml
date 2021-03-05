@@ -7,47 +7,6 @@
     android:background="#C5DAFC"
     tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/editTextWaterAmount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/add_water"
-        android:inputType="numberDecimal"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.383" />
-
-    <TextView
-        android:id="@+id/textViewCurrentValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0.0"
-        android:textAlignment="center"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextWaterAmount"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.867" />
-
-    <ImageButton
-        android:id="@+id/imageButtonAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:background="@null"
-        android:onClick="buttonAddWater"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextWaterAmount"
-        app:srcCompat="@drawable/button_add_effect" />
-
     <ImageButton
         android:id="@+id/imageButtonSettings"
         android:layout_width="wrap_content"
@@ -56,7 +15,7 @@
         android:onClick="buttonSettings"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.909"
+        app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.957"
@@ -69,7 +28,7 @@
         android:background="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.137"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.957"
@@ -83,14 +42,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.041"
+        app:layout_constraintVertical_bias="0.050000012"
         app:srcCompat="@drawable/waterpaltext" />
 
     <ImageButton
         android:id="@+id/imageButtonReset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="20dp"
         android:background="@null"
         android:onClick="buttonReset"
         app:layout_constraintEnd_toEndOf="parent"
@@ -100,6 +59,20 @@
         app:srcCompat="@drawable/button_reset_effect" />
 
     <TextView
+        android:id="@+id/textViewCurrentValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.0"
+        android:textAlignment="center"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextWaterAmount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.865" />
+
+    <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -107,19 +80,45 @@
         android:textSize="24sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/textViewCurrentValue"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.223"
+        app:layout_constraintHorizontal_bias="0.227"
         app:layout_constraintStart_toEndOf="@+id/textViewCurrentValue" />
 
     <ImageButton
-        android:id="@+id/imageButtonInfo"
-        android:layout_width="68dp"
-        android:layout_height="46dp"
-        android:layout_marginBottom="16dp"
-        android:onClick="buttonInfo"
+        android:id="@+id/imageButtonAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@null"
+        android:onClick="buttonAddWater"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextWaterAmount"
+        app:srcCompat="@drawable/button_add_effect" />
+
+    <EditText
+        android:id="@+id/editTextWaterAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/add_water"
+        android:inputType="numberDecimal"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.395" />
+
+    <ImageButton
+        android:id="@+id/imageButtonInfo"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@null"
+        android:onClick="buttonInfo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageButtonSettings"
+        app:layout_constraintStart_toEndOf="@+id/buttonGoCalendar"
+        app:srcCompat="@drawable/button_info_effect" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

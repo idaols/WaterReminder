@@ -8,11 +8,13 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 /**
@@ -35,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton buttonInfo;
 
 
-    private SharedPreferences sharedPreferences;
+    public SharedPreferences sharedPreferences;
     private final String sharePreferencesName = "weekdayStore";
     private final String weekDay = "weekDay";
 
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d("test", "water");
         setContentView(R.layout.activity_main);
 
+        getSupportActionBar().hide();
         counterDrinkWater = new Counter();
 
         editTextWaterAmount = findViewById(R.id.editTextWaterAmount);
@@ -60,9 +63,13 @@ public class MainActivity extends AppCompatActivity {
         buttonInfo = findViewById(R.id.imageButtonInfo);
 
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS_WATER, MODE_PRIVATE);
-        float water = sharedPreferences.getFloat(WATER_LOG, 0);
+        float water = sharedPreferences.getFloat(getDate(), 0);
         editTextWaterAmount.setHint("Add water in ml");
         counterDrinkWater.addDrankWater(water);
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putFloat("2/1/2021", 1001);
+        editor.commit();
 
 
         /**
@@ -105,8 +112,17 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS_WATER, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        editor.putFloat(WATER_LOG, counterDrinkWater.getDrankWaterValue());
+
+
+        Log.d(TAG, "Hugeluukkanen: mm/dd/yyyy " + getDate());
+        editor.putFloat(getDate(), counterDrinkWater.getDrankWaterValue());
         editor.commit();
+    }
+
+    public String getDate() {
+        Calendar dateNow = Calendar.getInstance();
+        String date = dateNow.get(Calendar.MONTH) + "/" + dateNow.get(Calendar.DAY_OF_MONTH) + "/" + dateNow.get(Calendar.YEAR);
+        return date;
     }
 
     /**
@@ -158,6 +174,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void resetCalculator() {
         counterDrinkWater.reset();
+        updateUI();
     }
 
     /**

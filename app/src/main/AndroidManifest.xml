@@ -23,6 +23,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".CalendarActivity"
+                  android:label="@string/calendar_name"
                   android:parentActivityName=".MainActivity" >
                 <meta-data
             android:name="android.support.PARENT_ACTIVITY"
@@ -30,12 +31,14 @@
         </activity>
         <activity
             android:name=".BackgroundSurveyActivity"
+            android:label="@string/settings_name"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
         <activity android:name=".InfoText"
+                  android:label="@string/info_name"
                   android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
