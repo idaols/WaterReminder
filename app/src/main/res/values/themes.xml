@@ -2,11 +2,11 @@
     <!-- Base application theme. -->
     <style name="Theme.WaterReminder" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/azure_light</item>
-        <item name="colorPrimaryVariant">@color/azure</item>
+        <item name="colorPrimary">@color/azure</item>
+        <item name="colorPrimaryVariant">@color/flower_blue</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/dark_blue</item>
+        <item name="colorSecondary">@color/little_boy_blue</item>
         <item name="colorSecondaryVariant">@color/royal_blue</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->

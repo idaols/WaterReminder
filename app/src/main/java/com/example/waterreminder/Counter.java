@@ -40,11 +40,8 @@ public class Counter {
      * If user adds value of 6000 or more, counter sends a warning message
      */
     public void addDrankWater(float addWaterAmount) {
-        if (addWaterAmount < 6000) {
-            this.drankWater = this.drankWater + addWaterAmount;
-        } else {
-            warning = true;
-        }
+        this.drankWater = this.drankWater + addWaterAmount;
+
     }
 
     /**
@@ -53,11 +50,7 @@ public class Counter {
      * @return reference to drankWater after adding drunk water amount
      */
     public float getDrankWaterValue() {
-        if (warning == false) {
-            return this.drankWater;
-        } else {
-            return -1;
-        }
+        return this.drankWater;
     }
 
 

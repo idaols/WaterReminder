@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#C5DAFC">
 
     <ImageButton
         android:id="@+id/imageButtonReminder"
-        android:layout_width="83dp"
-        android:layout_height="47dp"
-        android:layout_marginBottom="36dp"
+        android:layout_width="102dp"
+        android:layout_height="101dp"
+        android:background="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/waterreminderlogo1" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewReminder"
+        app:srcCompat="@drawable/button_reminder_effect" />
 
     <CalendarView
         android:id="@+id/calendarView"
-        android:layout_width="421dp"
-        android:layout_height="387dp"
+        android:layout_width="408dp"
+        android:layout_height="309dp"
+        android:background="#ECF3FE"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -29,23 +30,49 @@
         android:id="@+id/textViewDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:fontFamily="@font/bubblegum_sans2"
+        android:padding="10dp"
+        android:shadowColor="#FFFFFF"
+        android:shadowDx="0.0"
+        android:shadowDy="0.0"
+        android:shadowRadius="20"
+        android:textAlignment="center"
+        android:textColor="#3588d1"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewReminder"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.665" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewConsumption"
+        app:layout_constraintVertical_bias="0.35000002" />
 
     <TextView
         android:id="@+id/textViewReminder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="96dp"
-        android:text="Remind me in 2 hours"
+        android:fontFamily="@font/bubblegum_sans2"
+        android:text="@string/remind_me_in_2_hours"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.821" />
+
+    <TextView
+        android:id="@+id/textViewConsumption"
+        android:layout_width="409dp"
+        android:layout_height="52dp"
+        android:fontFamily="@font/bubblegum_sans"
+        android:text="Click the date to see your \n daily water consumption"
+        android:textAlignment="center"
+        android:textColor="#5196d4"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/calendarView"
+        app:layout_constraintVertical_bias="0.595" />
 </androidx.constraintlayout.widget.ConstraintLayout>

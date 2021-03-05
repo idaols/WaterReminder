@@ -57,15 +57,10 @@ public class CalendarActivity extends AppCompatActivity {
                 Log.d(TAG, "onSelectedDayChange: mm/dd/yyyy " + date);
 
                 SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS_WATER, MODE_PRIVATE);
-                //SharedPreferences.Editor editor = sharedPreferences.edit();
-
 
                 theDate = findViewById(R.id.textViewDate);
-                theDate.setText(Float.toString(sharedPreferences.getFloat(date, 0)));
+                theDate.setText(Float.toString(sharedPreferences.getFloat(date, 0)) + " ml");
 
-
-                //Intent intent = new Intent(CalendarActivity.this, DrankWaterPerDayActivity.class);
-                //startActivity(intent);
             }
 
 

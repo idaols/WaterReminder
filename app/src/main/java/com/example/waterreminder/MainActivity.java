@@ -3,6 +3,8 @@ package com.example.waterreminder;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -100,7 +102,26 @@ public class MainActivity extends AppCompatActivity {
 
         try {
             float value = Float.parseFloat(editTextWaterAmount.getText().toString());
-            counterDrinkWater.addDrankWater(value);
+            float total_value = counterDrinkWater.getDrankWaterValue();
+            if (value > 6000 || total_value >= 6000){
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+
+                builder.setCancelable(true);
+                builder.setTitle("Wait a minute");
+                builder.setMessage("You shouldn't drink that much at a time!\nIf you really did, please contact your doctor.");
+
+                builder.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                builder.show();
+            }
+            else{
+                counterDrinkWater.addDrankWater(value);
+            }
         }
         catch (Exception e) {
             float value = 0;
@@ -185,7 +206,7 @@ public class MainActivity extends AppCompatActivity {
         TextView tv = findViewById(R.id.textViewCurrentValue);
         Float value = counterDrinkWater.getDrankWaterValue();
         if (value == -1) {
-            tv.setText("You are drunk!");
+            ;
         } else {
             tv.setText(Float.toString(counterDrinkWater.getDrankWaterValue()));
         }

@@ -1,5 +1,7 @@
 package com.example.waterreminder;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -78,15 +80,33 @@ public class BackgroundSurveyActivity extends AppCompatActivity {
         EditText editWeight = findViewById(R.id.editTextWeight);
         Integer weight = Integer.parseInt(editTextWeight.getText().toString());
 
-        counterEstimate.countWaterAmount(age, weight);
+        if (!(age >= 0 && age <= 110 && weight >= 0 && weight <= 400)) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(BackgroundSurveyActivity.this);
+
+            builder.setCancelable(true);
+            builder.setTitle("Wait a minute");
+            builder.setMessage("Age must be between 0 and 110 years.\nWeight must be between 0 and 400 kg.");
+
+            builder.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+
+            builder.show();
+        } else {
+            counterEstimate.countWaterAmount(age, weight);
+            SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+
+            editor.putInt(AGE_LOG, age);
+            editor.putInt(WEIGHT_LOG, weight);
+            editor.commit();
+        }
+
         updateUI();
 
-        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-
-        editor.putInt(AGE_LOG, age);
-        editor.putInt(WEIGHT_LOG, weight);
-        editor.commit();
     }
 
     /**
