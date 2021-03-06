@@ -96,14 +96,12 @@ public class MainActivity extends AppCompatActivity {
     public void buttonAddWater(View view) {
         Log.d("test", "day");
 
-        Toast.makeText(MainActivity.this, "Good job!", Toast.LENGTH_SHORT).show();
-
         EditText editTextWaterAmount = findViewById(R.id.editTextWaterAmount);
 
         try {
             float value = Float.parseFloat(editTextWaterAmount.getText().toString());
             float total_value = counterDrinkWater.getDrankWaterValue();
-            if (value > 6000 || total_value >= 6000){
+            if (value > 6000 || total_value + value >= 7000){
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
 
                 builder.setCancelable(true);
@@ -121,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
             }
             else{
                 counterDrinkWater.addDrankWater(value);
+                Toast.makeText(MainActivity.this, "Good job!", Toast.LENGTH_SHORT).show();
             }
         }
         catch (Exception e) {

@@ -75,8 +75,6 @@ public class BackgroundSurveyActivity extends AppCompatActivity {
     public void buttonSave(View view) {
         Log.d("testi", "nappia painettu");
 
-        Toast.makeText(BackgroundSurveyActivity.this, "Saved!", Toast.LENGTH_SHORT).show();
-
         EditText editAge = findViewById(R.id.editTextAge);
         Integer age = Integer.parseInt(editAge.getText().toString());
         EditText editWeight = findViewById(R.id.editTextWeight);
@@ -99,6 +97,7 @@ public class BackgroundSurveyActivity extends AppCompatActivity {
             builder.show();
         } else {
             counterEstimate.countWaterAmount(age, weight);
+            Toast.makeText(BackgroundSurveyActivity.this, "Saved!", Toast.LENGTH_SHORT).show();
             SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
 
