@@ -20,11 +20,11 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 /**
- * @author Jenna, Ida and Henna
  * This main class implements the apps main screen, where user can add the amount of drunk water,
  * change setting, view calendar and info page.
  *
  * For the alert dialogue box we used YouTube tutorial: https://www.youtube.com/watch?v=7vWoi8j5vL4
+ * @author Jenna, Ida and Henna
  */
 
 public class MainActivity extends AppCompatActivity {

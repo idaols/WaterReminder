@@ -17,7 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * This class is for the background survey settings. Settings are saved with "Save"- button and will
- * appear when user goes back to setting. Info can be updated and saved again.
+ * appear when user goes back to settings. Info can be updated and saved again.
  * @author Jenna
  */
 
