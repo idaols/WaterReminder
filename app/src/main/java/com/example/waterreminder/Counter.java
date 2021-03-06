@@ -1,20 +1,16 @@
 package com.example.waterreminder;
 
-import android.widget.TextView;
 
 /**
  * This class counts the amount of water that user should drink daily.
- * @author ida
- * @version 1.0
+ * @author Ida
  */
 
 public class Counter {
     private float waterAmount;
     private float drankWater;
-    private boolean warning;
 
     public Counter() {
-        //this.waterAmount = countWaterAmount();
         this.drankWater = 0;
     }
 
@@ -37,7 +33,6 @@ public class Counter {
 
     /**
      * Method adds entered amount of drank water to drankWater variable
-     * If user adds value of 6000 or more, counter sends a warning message
      */
     public void addDrankWater(float addWaterAmount) {
         this.drankWater = this.drankWater + addWaterAmount;
@@ -46,7 +41,6 @@ public class Counter {
 
     /**
      * Returns how much water has been drunk
-     * If user adds value of 6000 or more, counter returns -1 and a warning message appears
      * @return reference to drankWater after adding drunk water amount
      */
     public float getDrankWaterValue() {
@@ -61,7 +55,9 @@ public class Counter {
         this.drankWater = 0;
     }
 
-
+    /**
+     * resets estimated water consumption value to zero
+     */
     public void resetSettings() {
         this.waterAmount = 0;
     }

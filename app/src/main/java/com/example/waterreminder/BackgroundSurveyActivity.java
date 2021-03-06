@@ -112,7 +112,7 @@ public class BackgroundSurveyActivity extends AppCompatActivity {
     }
 
     /**
-     * Method fo reset button. When clicked the calculator will reset.
+     * Method for reset button. When clicked the calculator will reset.
      * @param view
      */
 

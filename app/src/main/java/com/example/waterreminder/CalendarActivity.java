@@ -26,6 +26,15 @@ import java.util.prefs.PreferenceChangeListener;
 import java.util.prefs.Preferences;
 import java.util.prefs.PreferencesFactory;
 
+/**
+ * This class is for calendar, user can see daily water consumption day by day and set
+ * alarm to remember to drink.
+ *
+ * For the notifications system we used YouTube tutorial: 
+ *
+ * @author Henna
+ */
+
 public class CalendarActivity extends AppCompatActivity {
 
     private static final String TAG = "CalendarActivity";
@@ -40,6 +49,7 @@ public class CalendarActivity extends AppCompatActivity {
      * Shows calendar view and current day
      * when pressed any day on calendar it shows the drank water amount of that day under the calendar
      */
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +81,7 @@ public class CalendarActivity extends AppCompatActivity {
          * time is set to 10 seconds because we can show it on emulator presentation
          * normally it would be set to 100000 * 72 = 2 hours
          */
+
         remindMe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

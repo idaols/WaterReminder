@@ -22,8 +22,11 @@ import java.util.Calendar;
 /**
  * @author Jenna, Ida and Henna
  * This main class implements the apps main screen, where user can add the amount of drunk water,
- * change setting and view calendar.
+ * change setting, view calendar and info page.
+ *
+ * For the alert dialogue box we used YouTube tutorial: https://www.youtube.com/watch?v=7vWoi8j5vL4
  */
+
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
@@ -37,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton buttonReset;
     private ImageButton buttonGoCalendar;
     private ImageButton buttonInfo;
-
 
     public SharedPreferences sharedPreferences;
     private final String sharePreferencesName = "weekdayStore";
@@ -68,10 +70,6 @@ public class MainActivity extends AppCompatActivity {
         float water = sharedPreferences.getFloat(getDate(), 0);
         editTextWaterAmount.setHint("Add water in ml");
         counterDrinkWater.addDrankWater(water);
-
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putFloat("2/1/2021", 1001);
-        editor.commit();
 
 
         /**
@@ -136,11 +134,15 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
 
-
         Log.d(TAG, "TimeDisplay: mm/dd/yyyy " + getDate());
         editor.putFloat(getDate(), counterDrinkWater.getDrankWaterValue());
         editor.commit();
     }
+
+    /**
+     * Method for getting the current date
+     * @return reference to date
+     */
 
     public String getDate() {
         Calendar dateNow = Calendar.getInstance();
@@ -168,6 +170,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * Method for reset button. By pressing this button it will reset the drank water calculator.
+     * @param view
+     */
     public void buttonReset(View view) {
         counterDrinkWater.reset();
 
@@ -179,6 +185,11 @@ public class MainActivity extends AppCompatActivity {
 
         updateUI();
     }
+
+    /**
+     * Method for checking which weekday it currently is so calculator can reset itself for the next day.
+     * Resetting happens at midnight when the day changes.
+     */
 
     public void checkDate() {
         Calendar dateNow = Calendar.getInstance();
@@ -199,6 +210,10 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
+    /**
+     * Method for resetting the main calculator.
+     */
 
     public void resetCalculator() {
         counterDrinkWater.reset();
