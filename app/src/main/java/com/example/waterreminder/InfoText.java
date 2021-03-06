@@ -8,6 +8,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class InfoText extends AppCompatActivity {
 
+    /**
+     * Gets intent and displays the info text
+     */
     private TextView info;
 
     @Override

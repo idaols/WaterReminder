@@ -66,7 +66,11 @@ public class CalendarActivity extends AppCompatActivity {
 
         });
 
-
+        /**
+         * When reminder button pressed, pops up toast message and alarm set in 10 seconds
+         * time is set to 10 seconds because we can show it on emulator presentation
+         * normally it would be set to 100000 * 72 = 2 hours
+         */
         remindMe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,12 +85,18 @@ public class CalendarActivity extends AppCompatActivity {
 
                 long tenSecondsInMillis = 1000 * 10;
 
+                /**
+                 * RTC_WAKEUP wakes up the device to fire the pending intent at the specific time
+                  */
                 alarmManager.set(AlarmManager.RTC_WAKEUP, timeAtButtonClick + tenSecondsInMillis, pendingIntent);
             }
         });
     }
 
-
+    /**
+     * Method for creating notification channel
+     * Channel id from Lemubit youtube tutorial
+     */
     private void createNotificationChannel() {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
