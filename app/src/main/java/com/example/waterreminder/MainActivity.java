@@ -179,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS_WATER, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        editor.putFloat(WATER_LOG, 0);
+        editor.putFloat(getDate(), 0);
         editor.commit();
 
         updateUI();
