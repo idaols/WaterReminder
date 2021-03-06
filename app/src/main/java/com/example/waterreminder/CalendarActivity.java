@@ -30,8 +30,8 @@ import java.util.prefs.PreferencesFactory;
  * This class is for calendar, user can see daily water consumption day by day and set
  * alarm to remember to drink.
  *
- * For the notifications system we used YouTube tutorial: 
- *
+ * For the notifications system we used YouTube tutorial example:
+ *"https://www.youtube.com/watch?v=nl-dheVpt8o"
  * @author Henna
  */
 
