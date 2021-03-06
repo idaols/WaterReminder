@@ -7,6 +7,11 @@ import android.content.Intent;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+/**
+ *BroadcastReceiver class
+ * @author Henna
+ */
+
 public class Reminderbroadcast extends BroadcastReceiver {
 
     /**

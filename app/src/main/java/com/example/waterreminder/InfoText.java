@@ -6,11 +6,13 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * Gets intent and displays the info text
+ * @author Henna
+ */
+
 public class InfoText extends AppCompatActivity {
 
-    /**
-     * Gets intent and displays the info text
-     */
     private TextView info;
 
     @Override
